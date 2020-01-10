@@ -10,6 +10,10 @@ public static class EventManager
     public delegate void ColorEventHandler (Color newColor);
     public static event ColorEventHandler OnChangeColor = delegate { };
 
+    public delegate void ObjectInfoEventHandler(ObjectInfo _objectInfo);
+    public static event ObjectInfoEventHandler OnCreateFigure = delegate { };
+    public static event ObjectInfoEventHandler OnSelectFigure = delegate { };
+
     /// <summary>
     /// Изменили цвет
     /// </summary>
@@ -17,5 +21,23 @@ public static class EventManager
     public static void ChangeColor (Color _color)
     {
         OnChangeColor(_color);
+    }
+
+    /// <summary>
+    /// Создаём объект
+    /// </summary>
+    /// <param name="_objectInfo"></param>
+    public static void CreateFigure(ObjectInfo _objectInfo)
+    {
+        OnCreateFigure(_objectInfo);
+    }
+
+    /// <summary>
+    /// Выбираем фигуру
+    /// </summary>
+    /// <param name="_objectInfo"></param>
+    public static void SelectFigure(ObjectInfo _objectInfo)
+    {
+        OnSelectFigure(_objectInfo);
     }
 }

@@ -19,7 +19,6 @@ public class ObjectController : MonoBehaviour
     private void OnEnable()
     {
         Subscribe();
-        Init();
     }
 
     private void OnDisable()
@@ -55,8 +54,10 @@ public class ObjectController : MonoBehaviour
     /// <summary>
     /// Инициализируем объект
     /// </summary>
-    public void Init ()
+    public void Init (ObjectInfo _objectInfo)
     {
+        objectInfo = _objectInfo;
         material = GetComponent<MeshRenderer>().material;
+        isActive = false;
     }
 }
