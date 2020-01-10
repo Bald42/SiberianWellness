@@ -51,7 +51,7 @@ public class SpawnFigures : MonoBehaviour
                                    Quaternion.identity,
                                    parent);
 
-            newFigure.name = StringKeys.KEY_FIGURE + "_" + i.ToString();
+            newFigure.name = figures[i].Key;
             newFigure.GetComponent<ObjectController>().Init(figures[i]);
             EventManager.CreateFigure(figures[i]);
 

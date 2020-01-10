@@ -30,12 +30,14 @@ public class ObjectController : MonoBehaviour
     private void Subscribe()
     {
         EventManager.OnChangeColor += OnChangeColor;
+        EventManager.OnSelectFigure += OnSelectFigure;
     }
 
     /// <summary>Отписки</summary>
     private void UnSubscribe()
     {
         EventManager.OnChangeColor -= OnChangeColor;
+        EventManager.OnSelectFigure -= OnSelectFigure;
     }
 
     /// <summary>
@@ -49,6 +51,22 @@ public class ObjectController : MonoBehaviour
             material.color = _color;
         }
     }
+
+    /// <summary>
+    /// Обработчик события выбора фигуры
+    /// </summary>
+    /// <param name="_objectInfo"></param>
+    private void OnSelectFigure (ObjectInfo _objectInfo)
+    {
+        if (_objectInfo == objectInfo)
+        {
+            isActive = true;
+        }
+        else
+        {
+            isActive = false;
+        }
+    }
     #endregion
 
     /// <summary>
@@ -59,5 +77,6 @@ public class ObjectController : MonoBehaviour
         objectInfo = _objectInfo;
         material = GetComponent<MeshRenderer>().material;
         isActive = false;
+        //TODO добавить активацию цвета, если он был применён
     }
 }

@@ -8,5 +8,6 @@ using UnityEngine;
 public static class StringKeys
 {
     public const string KEY_CLONE = "(Clone)";
+    public const string KEY_BUTTON_FIGURE = "ButtonFigure";
     public const string KEY_FIGURE = "Figure";
 }

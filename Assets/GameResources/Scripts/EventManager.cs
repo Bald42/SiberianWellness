@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public static class EventManager
 {
+    public delegate void EmptyEventHandler();
+    public static event EmptyEventHandler OnClickBack = delegate { };
+
     public delegate void ColorEventHandler (Color newColor);
     public static event ColorEventHandler OnChangeColor = delegate { };
 
@@ -39,5 +42,13 @@ public static class EventManager
     public static void SelectFigure(ObjectInfo _objectInfo)
     {
         OnSelectFigure(_objectInfo);
+    }
+
+    /// <summary>
+    /// Вызываем событие по нажатию на бэк
+    /// </summary>
+    public static void ClickBack ()
+    {
+        OnClickBack();
     }
 }
