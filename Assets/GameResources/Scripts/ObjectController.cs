@@ -49,6 +49,7 @@ public class ObjectController : MonoBehaviour
         if (isActive)
         {
             material.color = _color;
+            PlayerPrefsHelper.SetColor(objectInfo.Key, _color);
         }
     }
 
@@ -72,11 +73,22 @@ public class ObjectController : MonoBehaviour
     /// <summary>
     /// Инициализируем объект
     /// </summary>
-    public void Init (ObjectInfo _objectInfo)
+    public void Init(ObjectInfo _objectInfo)
     {
         objectInfo = _objectInfo;
         material = GetComponent<MeshRenderer>().material;
         isActive = false;
-        //TODO добавить активацию цвета, если он был применён
+        CheckColor();
+    }
+
+    /// <summary>
+    /// Применяем цвет если он сохранён для этого объекта
+    /// </summary>
+    private void CheckColor ()
+    {
+        if (PlayerPrefsHelper.HasKeyColor(objectInfo.Key))
+        {
+            material.color = PlayerPrefsHelper.GetColor(objectInfo.Key);
+        }
     }
 }
