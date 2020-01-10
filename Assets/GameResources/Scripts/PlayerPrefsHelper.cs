@@ -21,7 +21,7 @@ public static class PlayerPrefsHelper
         color.a = PlayerPrefs.GetFloat(_key + "_Color_A");
         return color;
     }
-
+       
     /// <summary>
     /// Записать цвет в префсы
     /// </summary>
@@ -35,5 +35,21 @@ public static class PlayerPrefsHelper
         PlayerPrefs.SetFloat(_key + "_Color_B", _color.b);
         PlayerPrefs.SetFloat(_key + "_Color_A", _color.a);
         PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// Проверяем существует ли ключ цвета
+    /// </summary>
+    /// <returns></returns>
+    public static bool HasKeyColor(string _key)
+    {
+        if (PlayerPrefs.HasKey(_key + "_Color_R"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
