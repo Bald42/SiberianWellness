@@ -53,7 +53,7 @@ public class ActiveWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// Открываем/закрываем окно
+    /// Открываем/закрываем окно по умолчанию с анимацией
     /// </summary>
     /// <param name="_isActive"></param>
     /// <param name="_isAnim"></param>
