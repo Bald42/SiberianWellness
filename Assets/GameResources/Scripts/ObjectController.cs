@@ -30,13 +30,13 @@ public class ObjectController : MonoBehaviour
     /// <summary>Подписки</summary>
     private void Subscribe()
     {
-        ButtonColor.OnChangeColor += OnChangeColor;
+        EventManager.OnChangeColor += OnChangeColor;
     }
 
     /// <summary>Отписки</summary>
     private void UnSubscribe()
     {
-        ButtonColor.OnChangeColor -= OnChangeColor;
+        EventManager.OnChangeColor -= OnChangeColor;
     }
 
     /// <summary>
