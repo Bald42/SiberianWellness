@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 public class UIController : MonoBehaviour
 {
-    //TODO переделать на события
     [SerializeField]
     private ActiveWindow windowColorButton = null;
 
@@ -16,6 +15,48 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private ActiveWindow windowBackButton = null;
+
+    #region Subscribes / UnSubscribes
+    private void OnEnable()
+    {
+        Subscribe();
+    }
+
+    private void OnDisable()
+    {
+        UnSubscribe();
+    }
+
+    /// <summary>Подписки</summary>
+    private void Subscribe()
+    {
+        EventManager.OnSelectFigure += OnSelectFigure;
+        EventManager.OnClickBack += OnClickBack;
+    }
+
+    /// <summary>Отписки</summary>
+    private void UnSubscribe()
+    {
+        EventManager.OnSelectFigure -= OnSelectFigure;
+        EventManager.OnClickBack -= OnClickBack;
+    }
+
+    /// <summary>
+    /// Обработчик события выбора фигуры
+    /// </summary>
+    private void OnSelectFigure (ObjectInfo empty)
+    {
+        OnFigure();
+    }
+
+    /// <summary>
+    /// Обработчик события нажатия кнопки бэк
+    /// </summary>
+    private void OnClickBack ()
+    {
+        OnBack();
+    }
+    #endregion
 
     private void Awake()
     {

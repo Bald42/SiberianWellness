@@ -16,8 +16,6 @@ public class SpawnColorButtons : MonoBehaviour
     [SerializeField]
     private Transform parentObject = null;
 
-    private const string KEY_CLONE = "(Clone)";
-
     private void Awake()
     {
         Spawn();
@@ -33,7 +31,7 @@ public class SpawnColorButtons : MonoBehaviour
             for (int i=0; i < colorsInfo.Colors.Count; i++)
             {
                 GameObject newButton = Instantiate(prefabButton,parentObject);
-                newButton.name = newButton.name.Replace(KEY_CLONE, "_" + i.ToString());
+                newButton.name = newButton.name.Replace(StringKeys.KEY_CLONE, "_" + i.ToString());
                 newButton.GetComponent<ButtonColor>().Init(colorsInfo.Colors[i]);
             }
         }

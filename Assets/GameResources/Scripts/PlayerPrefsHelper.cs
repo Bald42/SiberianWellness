@@ -15,7 +15,10 @@ public static class PlayerPrefsHelper
     public static Color GetColor (string _key)
     {
         Color color = Color.white;
-
+        color.r = PlayerPrefs.GetFloat(_key + "_Color_R");
+        color.g = PlayerPrefs.GetFloat(_key + "_Color_G");
+        color.b = PlayerPrefs.GetFloat(_key + "_Color_B");
+        color.a = PlayerPrefs.GetFloat(_key + "_Color_A");
         return color;
     }
 
@@ -27,6 +30,10 @@ public static class PlayerPrefsHelper
     /// <returns></returns>
     public static void SetColor(string _key, Color _color)
     {
-        Color color = Color.white;
+        PlayerPrefs.SetFloat(_key + "_Color_R", _color.r);
+        PlayerPrefs.SetFloat(_key + "_Color_G", _color.g);
+        PlayerPrefs.SetFloat(_key + "_Color_B", _color.b);
+        PlayerPrefs.SetFloat(_key + "_Color_A", _color.a);
+        PlayerPrefs.Save();
     }
 }

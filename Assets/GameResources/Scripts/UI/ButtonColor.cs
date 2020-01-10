@@ -7,10 +7,7 @@ using UnityEngine.UI;
 /// Кнопка выбора цвета
 /// </summary>
 public class ButtonColor : MonoBehaviour
-{
-    public delegate void ChangeColorEventHandler (Color newColor);
-    public static event ChangeColorEventHandler OnChangeColor = delegate { };
-
+{   
     private Color color = Color.white;
 
     private Button button = null;
@@ -62,6 +59,6 @@ public class ButtonColor : MonoBehaviour
     /// </summary>
     private void OnClick()
     {
-        OnChangeColor(color);
+        EventManager.ChangeColor(color);
     }
 }
