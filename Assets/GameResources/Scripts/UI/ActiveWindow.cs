@@ -14,7 +14,7 @@ public class ActiveWindow : MonoBehaviour
 
     private const float MIN = 0.0001f;
 
-    private const float SPEED = 0.01f;
+    private const float SPEED = 10f;
 
     /// <summary>
     /// Открываем/закрываем окно
@@ -71,8 +71,8 @@ public class ActiveWindow : MonoBehaviour
         bool _isMove = true;
         while (_isMove)
         {
-            transform.localScale = Vector3.Lerp(transform.localScale, _vector, Time.unscaledTime * SPEED);
-
+            transform.localScale = Vector3.Lerp(transform.localScale, _vector, Time.unscaledDeltaTime * SPEED);
+            
             if (_vector == vectorOpen && 
                 transform.localScale.x > vectorOpen.x - MIN)
             {
@@ -86,7 +86,7 @@ public class ActiveWindow : MonoBehaviour
                 _isMove = false;
                 transform.localScale = vectorClose;
             }
-            yield return new WaitForSecondsRealtime(Time.unscaledTime);
+            yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
         }
     }
 }

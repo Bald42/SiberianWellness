@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7581719214158652752, guid: 6c4952a790f9b0e41b2da3a47e439cdb, type: 3}
   Key: Sphere
+  Name: "\u0421\u0444\u0435\u0440\u0430"
