@@ -48,8 +48,12 @@ public class ObjectController : MonoBehaviour
     {
         if (isActive)
         {
-            material.color = _color;
-            PlayerPrefsHelper.SetColor(objectInfo.Key, _color);
+            if (material.color != _color)
+            {
+                SoundPlayer.Instance.PlayArfa(0.8f);
+                material.color = _color;
+                PlayerPrefsHelper.SetColor(objectInfo.Key, _color);
+            }
         }
     }
 
