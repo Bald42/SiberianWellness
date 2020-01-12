@@ -16,6 +16,8 @@ public class SpawnFigures : MonoBehaviour
     [SerializeField]
     private float distanceBetweenFigure = 1f;
 
+    private const float HALF = 0.5f;        
+
     private void Start()
     {
         Init();
@@ -39,10 +41,13 @@ public class SpawnFigures : MonoBehaviour
             return;
         }
 
-        float distanceX = (figures.Count - 1) * distanceBetweenFigure * 0.5f;
+        float tempDistance = (figures.Count - 1) * distanceBetweenFigure;
 
         Vector3 newPosition = Vector3.zero;
-        newPosition.x = - distanceX;
+        Vector3 startPositionCamera = Vector3.zero;
+
+        newPosition.x = - tempDistance * HALF;
+        startPositionCamera.z = - tempDistance;
 
         for (int i = 0; i < figures.Count; i++)
         {            
@@ -57,5 +62,7 @@ public class SpawnFigures : MonoBehaviour
 
             newPosition.x += distanceBetweenFigure;
         }
+
+        EventManager.CreateFigurePosition (startPositionCamera);
     }
 }
