@@ -10,7 +10,7 @@ public class ObjectController : MonoBehaviour
     private AnimScale animScale = null;
     private ObjectInfo objectInfo = null;
     private bool isActive = true;
-    private Material material = null;
+    private List <Material> materials = new List<Material> ();
 
     #region Subscribes / UnSubscribes
     private void OnEnable()
@@ -48,10 +48,13 @@ public class ObjectController : MonoBehaviour
     {
         if (isActive)
         {
-            if (material.color != _color)
+            if (materials[0].color != _color)
             {
                 SoundPlayer.Instance.PlayArfa(0.8f);
-                material.color = _color;
+                for (int i = 0; i < materials.Count; i++)
+                {
+                    materials[i].color = _color;
+                }
                 EventManager.CheckNewColor (transform.position, _color);
                 PlayerPrefsHelper.SetColor(objectInfo.Key, _color);
             }
@@ -91,7 +94,11 @@ public class ObjectController : MonoBehaviour
     public void Init(ObjectInfo _objectInfo)
     {
         objectInfo = _objectInfo;
-        material = GetComponent<MeshRenderer>().material;
+        MeshRenderer [] meshRenderers = GetComponentsInChildren <MeshRenderer>();
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            materials.Add(meshRenderers[i].material);
+        }
         animScale = GetComponent<AnimScale>();
         isActive = false;
         CheckColor();
@@ -104,7 +111,10 @@ public class ObjectController : MonoBehaviour
     {
         if (PlayerPrefsHelper.HasKeyColor(objectInfo.Key))
         {
-            material.color = PlayerPrefsHelper.GetColor(objectInfo.Key);
+            for (int i = 0; i < materials.Count; i++)
+            {
+                materials[i].color = PlayerPrefsHelper.GetColor(objectInfo.Key);
+            }            
         }
     }
 }

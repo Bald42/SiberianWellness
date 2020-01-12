@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d351d19dfd3c464cae21ee43889fb69, type: 3}
+  m_Name: Capsule 1
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 6661730488630034246, guid: e693f14522ca20d4087baf8d1e96853f, type: 3}
+  Key: Capsule 1
+  Name: "\u041A\u0430\u043F\u0441\u0443\u043B\u0430 1"
