@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Открываем/закрываем окно
+/// Плавное увеличение и уменьшение объекта
 /// </summary>
-public class ActiveWindow : MonoBehaviour
+public class AnimScale : MonoBehaviour
 {
     private Vector3 vectorClose = Vector3.zero;
     private Vector3 vectorOpen = Vector3.one;
@@ -21,7 +21,7 @@ public class ActiveWindow : MonoBehaviour
     /// </summary>
     /// <param name="_isActive"></param>
     /// <param name="_isAnim"></param>
-    public void Active (bool _isActive, bool _isAnim)
+    public void Active(bool _isActive, bool _isAnim)
     {
         if (_isAnim)
         {
@@ -53,11 +53,11 @@ public class ActiveWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// Открываем/закрываем окно
+    /// Открываем/закрываем окно по умолчанию с анимацией
     /// </summary>
     /// <param name="_isActive"></param>
     /// <param name="_isAnim"></param>
-    public void Active (bool _isActive)
+    public void Active(bool _isActive)
     {
         Active(_isActive, true);
     }
@@ -66,14 +66,14 @@ public class ActiveWindow : MonoBehaviour
     /// Анимация окна
     /// </summary>
     /// <returns></returns>
-    private IEnumerator MoveWindow (Vector3 _vector)
+    private IEnumerator MoveWindow(Vector3 _vector)
     {
         bool _isMove = true;
         while (_isMove)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, _vector, Time.unscaledDeltaTime * SPEED);
-            
-            if (_vector == vectorOpen && 
+
+            if (_vector == vectorOpen &&
                 transform.localScale.x > vectorOpen.x - MIN)
             {
                 _isMove = false;

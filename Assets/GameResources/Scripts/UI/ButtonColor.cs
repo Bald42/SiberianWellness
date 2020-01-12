@@ -7,23 +7,73 @@ using UnityEngine.UI;
 /// Кнопка выбора цвета
 /// </summary>
 public class ButtonColor : MonoBehaviour
-{
-    public delegate void ChangeColorEventHandler (Color newColor);
-    public static event ChangeColorEventHandler OnChangeColor = delegate { };
-
+{   
     private Color color = Color.white;
 
     private Button button = null;
 
+    [SerializeField]
+    private AnimScale iconMark = null;
+
+    #region Subscribes / UnSubscribes
     private void OnEnable()
     {
+        Subscribe();
         AddClick();
     }
 
     private void OnDisable()
     {
+        UnSubscribe();
         DeleteClick();
     }
+
+    /// <summary>Подписки</summary>
+    private void Subscribe()
+    {
+        EventManager.OnChangeColor += OnChangeColor;
+        EventManager.OnSelectFigure += OnSelectFigure;
+    }
+
+    /// <summary>Отписки</summary>
+    private void UnSubscribe()
+    {
+        EventManager.OnChangeColor -= OnChangeColor;
+        EventManager.OnSelectFigure -= OnSelectFigure;
+    }
+
+    /// <summary>
+    /// Обработчик события изменения цвета
+    /// </summary>
+    /// <param name="_color"></param>
+    private void OnChangeColor(Color _color)
+    {
+        if (color == _color)
+        {
+            iconMark.Active(true);
+        }
+        else
+        {
+            iconMark.Active(false);
+        }
+    }
+
+    /// <summary>
+    /// Обработчик события выбора фигуры
+    /// </summary>
+    /// <param name="_objectInfo"></param>
+    private void OnSelectFigure(ObjectInfo _objectInfo)
+    {
+        iconMark.Active(false, false);
+        if (PlayerPrefsHelper.HasKeyColor(_objectInfo.Key))
+        {
+            if (color == PlayerPrefsHelper.GetColor(_objectInfo.Key))
+            {
+                iconMark.Active(true, false);
+            }
+        }
+    }
+    #endregion
 
     /// <summary>
     /// Добавляем метод на кнопку
@@ -55,6 +105,7 @@ public class ButtonColor : MonoBehaviour
     {
         color = _color;
         GetComponent<Image>().color = color;
+        iconMark.Active(false, false);
     }
 
     /// <summary>
@@ -62,6 +113,6 @@ public class ButtonColor : MonoBehaviour
     /// </summary>
     private void OnClick()
     {
-        OnChangeColor(color);
+        EventManager.ChangeColor(color);
     }
 }
