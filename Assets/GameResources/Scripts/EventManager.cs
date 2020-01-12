@@ -21,6 +21,9 @@ public static class EventManager
     public static event Vector3EventHandler OnCreateFigurePosition = delegate { };
     public static event Vector3EventHandler OnSelectFigurePosition = delegate { };
 
+    public delegate void CheckNewColorEventHandler (Vector3 newPosition, Color newColor);
+    public static event CheckNewColorEventHandler OnCheckNewColor = delegate { };
+
     /// <summary>
     /// Изменили цвет
     /// </summary>
@@ -72,5 +75,13 @@ public static class EventManager
     public static void SelectFigurePosition (Vector3 _position)
     {
         OnSelectFigurePosition (_position);
+    }
+
+    /// <summary>
+    /// Задаём новый цвет фигуре
+    /// </summary>
+    public static void CheckNewColor (Vector3 _position, Color _color)
+    {
+        OnCheckNewColor(_position, _color);
     }
 }
