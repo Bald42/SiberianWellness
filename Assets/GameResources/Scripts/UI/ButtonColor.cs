@@ -13,7 +13,7 @@ public class ButtonColor : MonoBehaviour
     private Button button = null;
 
     [SerializeField]
-    private ActiveWindow iconMark = null;
+    private AnimScale iconMark = null;
 
     #region Subscribes / UnSubscribes
     private void OnEnable()

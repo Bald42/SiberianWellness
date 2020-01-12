@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3492068717083242489}
   - component: {fileID: 3492068717083242488}
   - component: {fileID: 5498609747441824050}
+  - component: {fileID: 455444816325908123}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -90,5 +91,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cae25dd98d35345baead8a24f32607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onAddHeal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3492068717083242490}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ObjectController+Player_AddHeal, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   objectInfo: {fileID: 0}
   isActive: 1
+--- !u!114 &455444816325908123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3492068717083242490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f156a81f676db9c4090a2a7576c7261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

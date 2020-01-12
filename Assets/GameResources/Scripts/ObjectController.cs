@@ -7,12 +7,9 @@ using UnityEngine;
 /// </summary>
 public class ObjectController : MonoBehaviour
 {
-    [SerializeField]
+    private AnimScale animScale = null;
     private ObjectInfo objectInfo = null;
-
-    [SerializeField]
     private bool isActive = true;
-
     private Material material = null;
 
     #region Subscribes / UnSubscribes
@@ -31,6 +28,7 @@ public class ObjectController : MonoBehaviour
     {
         EventManager.OnChangeColor += OnChangeColor;
         EventManager.OnSelectFigure += OnSelectFigure;
+        EventManager.OnClickBack += OnClickBack;
     }
 
     /// <summary>Отписки</summary>
@@ -38,6 +36,8 @@ public class ObjectController : MonoBehaviour
     {
         EventManager.OnChangeColor -= OnChangeColor;
         EventManager.OnSelectFigure -= OnSelectFigure;
+        EventManager.OnClickBack -= OnClickBack;
+
     }
 
     /// <summary>
@@ -62,11 +62,21 @@ public class ObjectController : MonoBehaviour
         if (_objectInfo == objectInfo)
         {
             isActive = true;
+            EventManager.SelectFigurePosition(transform.position);
         }
         else
         {
+            animScale.Active(false);
             isActive = false;
         }
+    }
+
+    /// <summary>
+    /// Обработчик события нажатия на бэк
+    /// </summary>
+    private void OnClickBack ()
+    {
+        animScale.Active(true);
     }
     #endregion
 
@@ -77,6 +87,7 @@ public class ObjectController : MonoBehaviour
     {
         objectInfo = _objectInfo;
         material = GetComponent<MeshRenderer>().material;
+        animScale = GetComponent<AnimScale>();
         isActive = false;
         CheckColor();
     }

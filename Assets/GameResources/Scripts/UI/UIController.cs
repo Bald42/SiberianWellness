@@ -8,13 +8,13 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField]
-    private ActiveWindow windowColorButton = null;
+    private AnimScale windowColorButton = null;
 
     [SerializeField]
-    private ActiveWindow windowFigureButton = null;
+    private AnimScale windowFigureButton = null;
 
     [SerializeField]
-    private ActiveWindow windowBackButton = null;
+    private AnimScale windowBackButton = null;
 
     #region Subscribes / UnSubscribes
     private void OnEnable()
