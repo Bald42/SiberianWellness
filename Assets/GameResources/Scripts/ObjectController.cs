@@ -52,6 +52,7 @@ public class ObjectController : MonoBehaviour
             {
                 SoundPlayer.Instance.PlayArfa(0.8f);
                 material.color = _color;
+                EventManager.CheckNewColor (transform.position, _color);
                 PlayerPrefsHelper.SetColor(objectInfo.Key, _color);
             }
         }
